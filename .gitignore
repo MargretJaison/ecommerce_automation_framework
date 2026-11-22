@@ -1,0 +1,35 @@
+# Environment variables
+.env
+ 
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+ 
+# Virtual environment
+venv/
+.venv/
+env/
+ 
+# Pytest cache
+.pytest_cache/
+ 
+# Test reports
+reports/*
+!reports/.gitkeep
+ 
+# Screenshots
+screenshots/*
+!screenshots/.gitkeep
+ 
+# Playwright files
+playwright-report/
+test-results/
+ 
+# IDE files
+.vscode/
+.idea/
+ 
+# Operating system files
+.DS_Store
+Thumbs.db

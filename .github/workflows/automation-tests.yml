@@ -17,37 +17,46 @@ jobs:
     runs-on: ubuntu-latest
  
     steps:
-      # Step 1: Get project code
       - name: Checkout repository
         uses: actions/checkout@v4
  
-      # Step 2: Install Python
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: pip
  
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
  
-      # Step 4: Install Playwright browser
       - name: Install Playwright Chromium
         run: playwright install --with-deps chromium
  
-      # Step 5: Create reports folder
       - name: Create reports folder
         run: mkdir -p reports
  
-      # Step 6: Run automation tests
+      - name: Check website accessibility
+        run: |
+          echo "Checking website response..."
+ 
+          curl -sS -L -D headers.txt -o response.html \
+            -w "HTTP Status: %{http_code}\n" \
+            https://automationexercise.com/
+ 
+          echo "Response headers:"
+          cat headers.txt
+ 
+          echo "Response preview:"
+          head -c 1000 response.html
+ 
       - name: Execute UI and API tests
         run: |
-          pytest tests -v --html=reports/automation_report.html --self-contained-html
+          pytest tests -v -s \
+            --html=reports/automation_report.html \
+            --self-contained-html
  
-      # Step 7: Upload reports and screenshots
       - name: Upload test reports and screenshots
         if: always()
         uses: actions/upload-artifact@v4

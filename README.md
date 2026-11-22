@@ -1,115 +1,137 @@
-E-Commerce Website Automation Testing
+# E-Commerce Automation Testing Framework
+ 
+## Project Overview
+ 
+An automation testing framework developed to test the functionalities of an e-commerce website using Python, Playwright, Pytest, and Requests.
+ 
+The framework performs UI automation and API testing to validate application functionality and verify expected results.
+ 
+**Application Under Test:** https://automationexercise.com/
+ 
+## Tech Stack
+ 
+- Python
+- Playwright
+- Pytest
+- Requests
+- Page Object Model (POM)
+- Pytest HTML Reporting
+- GitHub Actions
+ 
+## Testing Coverage
+ 
+### UI Automation
+ 
+A total of 15 UI test scenarios are automated:
+ 
+1. Home page verification
+2. User registration
+3. Successful account creation
+4. Login with valid credentials
+5. Login with invalid credentials
+6. User logout
+7. Products page navigation
+8. Product search
+9. Product details verification
+10. Add product to cart
+11. Cart product and quantity verification
+12. Remove product from cart
+13. Product category navigation
+14. Product brand navigation
+15. Subscription functionality
+ 
+### API Automation
+ 
+The framework covers the following 8 API functionalities:
+ 
+| HTTP Method | Functionality |
+|---|---|
+| GET | Retrieve Products List |
+| GET | Retrieve Brands List |
+| POST | Search Products |
+| POST | Verify Login |
+| POST | Create Account |
+| PUT | Update Account |
+| DELETE | Delete Account |
+| GET | Retrieve User Details by Email |
+ 
+Additional positive and negative test scenarios are included to validate API responses.
+ 
+## Project Execution
+ 
+### Install Dependencies
+ 
 
-About the Project
-
-This project focuses on automating the testing of an e-commerce website using Python, Playwright, Pytest, and Requests.
-It includes UI automation and API testing to verify important website functionalities.
-Website: https://automationexercise.com/
-
-Technologies Used
-
-Python
-Playwright
-Pytest
-Requests
-Page Object Model (POM)
-HTML Test Reports
-GitHub Actions
-
-Project Structure
-
-ecommerce_automation_framework/
-│
-├── config/          # Project configuration
-├── pages/           # Page Object Model classes
-├── tests/
-│   ├── ui/          # UI test cases
-│   └── api/         # API test cases
-├── utils/           # Reusable utilities
-├── reports/         # HTML test reports
-├── screenshots/     # Failure screenshots
-├── .github/
-│   └── workflows/   # GitHub Actions workflow
-│
-├── conftest.py
-├── pytest.ini
-├── requirements.txt
-├── .env.example
-└── README.md
-
-UI Test Scenarios
-
-The framework covers 15 UI test scenarios:
-
-Verify home page loading.
-Register a new user.
-Verify account creation.
-Login with valid credentials.
-Login with invalid credentials.
-Logout from the application.
-Navigate to the Products page.
-Search for a product.
-View product details.
-Add a product to the cart.
-Verify product details and quantity in the cart.
-Remove a product from the cart.
-Navigate through product categories.
-Navigate through product brands.
-Verify subscription functionality.
-
-
-API Test Scenarios
-
-The framework covers following API scenarios:
-GET Products List.
-GET Brands List.
-POST Search Product.
-POST Verify Login.
-POST Create Account.
-PUT Update Account.
-DELETE Account.
-GET User Details by Email.
-
-
-Installation and Setup
-
-Step 1: Clone the repository
-git clone <your-github-repository-url>
-
-Step 2: Navigate to the project folder
-cd ecommerce_automation_framework
-
-Step 3: Install dependencies
 pip install -r requirements.txt
 
-Step 4: Install Playwright browser
+ 
+### Install Playwright Browser
+ 
+
 playwright install chromium
 
-Running Tests
+ 
+### Run UI Tests
+ 
 
-Run all tests:
-pytest tests -v
-
-Run UI tests:
 pytest tests/ui -v
 
-Run API tests:
+ 
+### Run API Tests
+ 
+
 pytest tests/api -v
 
-HTML Test Reports
+ 
+### Run All Tests
+ 
 
-Generate an HTML report:
-pytest tests -v --html=reports/automation_report.html --self-contained-html
-The report contains test execution results, including passed and failed test cases.
+pytest tests -v
 
-Screenshots
+ 
+## Automation Reports
+ 
+HTML reports are generated using Pytest HTML.
+ 
+The framework generates three types of reports:
+ 
+1. **UI Automation Report:** Displays the execution results of UI test cases.
+2. **API Automation Report:** Displays the execution results of API test cases.
+3. **Combined Automation Report:** Provides a consolidated view of both UI and API test execution results in a single HTML report.
+ 
+### Generate UI Report
+ 
+pytest tests/ui -v -s --html=reports/ui_report.html --self-contained-html
 
+ 
+### Generate API Report
+ 
+
+pytest tests/api -v -s --html=reports/api_report.html --self-contained-html
+
+ 
+### Generate Combined Automation Report
+ 
+
+pytest tests -v -s --html=reports/automation_report.html --self-contained-html
+
+ 
+All reports are saved in the `reports/` directory.
+ 
+The reports provide details about passed and failed test cases, execution status, and failure information.
+ 
 Screenshots are automatically captured when UI test cases fail.
-They are stored in the screenshots/ folder.
-
-CI/CD Integration
-
-GitHub Actions is configured to execute automation tests automatically when code is pushed or a pull request is created.
-
-
-\
+ 
+## Test Execution Results
+ 
+| Test Suite | Total Tests | Passed |
+|---|---:|---:|
+| UI Automation | 15 | 15 |
+| API Automation | 9 | 9 |
+| **Overall** | **24** | **24** |
+ 
+## CI/CD Integration
+ 
+GitHub Actions is integrated to execute automation tests whenever code is pushed or a pull request is created.
+ 
+Test reports and screenshots are uploaded as workflow artifacts.

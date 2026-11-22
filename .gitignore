@@ -15,10 +15,6 @@ env/
 .pytest_cache/
  
  
-# Screenshots
-screenshots/*
-!screenshots/.gitkeep
- 
 # Playwright files
 playwright-report/
 test-results/
